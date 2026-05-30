@@ -86,16 +86,36 @@ export default function SecretariatModal({
 
         {!formSubmitted ? (
           <div className="p-8 md:p-12 space-y-8">
-            <div className="space-y-2">
-              <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary dark:text-white leading-tight">
-                {lang === "fr" ? "Contacter le Secrétariat" : "Contact Secretariat"}
-              </h3>
-              <p className="font-sans text-xs md:text-sm text-on-surface-variant dark:text-primary-fixed-dim font-medium">
-                {lang === "fr" ? 
-                  "Soumettez votre demande aux représentants officiels du programme d'intégration Canada-Afrique." :
-                  "Submit your inquiry to the official representatives for the Canada-Africa integration program."
-                }
-              </p>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <h3 className="font-serif text-2xl md:text-3xl font-bold text-primary dark:text-white leading-tight">
+                  {lang === "fr" ? "Contacter le Secrétariat" : "Contact Secretariat"}
+                </h3>
+                <p className="font-sans text-xs md:text-sm text-on-surface-variant dark:text-primary-fixed-dim font-medium">
+                  {lang === "fr" ? 
+                    "Soumettez votre demande aux représentants officiels du programme d'intégration Canada-Afrique." :
+                    "Submit your inquiry to the official representatives for the Canada-Africa integration program."
+                  }
+                </p>
+              </div>
+
+              {/* Official Contact Info Badge */}
+              <div className="p-4 bg-white/[0.02] border border-outline-variant/30 rounded-lg space-y-2 font-sans text-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-secondary font-bold">Email:</span>
+                    <a href="mailto:info@nextgeninnovation.ng" className="text-white hover:underline hover:text-secondary transition-colors font-medium">
+                      info@nextgeninnovation.ng
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-secondary font-bold">Website:</span>
+                    <a href="https://www.nextgeninnovation.ng" target="_blank" rel="noreferrer" className="text-white hover:underline hover:text-secondary transition-colors font-medium">
+                      www.nextgeninnovation.ng
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {errorMessage && (

@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import { PIONEERS_DATA, MILESTONES_DATA } from "../data";
 import {
@@ -14,9 +15,133 @@ import {
   Shield,
   Globe2,
   QrCode,
+  Building,
+  Cpu,
+  Activity,
+  Award,
 } from "lucide-react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Cell,
+} from "recharts";
 
 import { Language, translations } from "../translations";
+
+const STATUTORY_MILESTONES = [
+  {
+    year: "2021",
+    centers: 21,
+    rd: 150,
+    startups: 320,
+    sovereignty: 45,
+  },
+  {
+    year: "2022",
+    centers: 25,
+    rd: 180,
+    startups: 440,
+    sovereignty: 52,
+  },
+  {
+    year: "2023",
+    centers: 29,
+    rd: 230,
+    startups: 610,
+    sovereignty: 63,
+  },
+  {
+    year: "2024",
+    centers: 32,
+    rd: 310,
+    startups: 920,
+    sovereignty: 76,
+  },
+  {
+    year: "2025",
+    centers: 36,
+    rd: 450,
+    startups: 1350,
+    sovereignty: 88,
+  },
+  {
+    year: "2026",
+    centers: 42,
+    rd: 600,
+    startups: 1800,
+    sovereignty: 95,
+  },
+];
+
+const chartLabels = {
+  en: {
+    title: "Statutory Performance & Incubation Tracker",
+    centers: "Active Hub Centers",
+    rd: "R&D Commercialized",
+    startups: "Graduated Startups",
+    sovereignty: "Sovereignty Rating",
+    desc: "National board capacity projections and actual achievements across technology incubation centers.",
+    centersUnits: " Centers established",
+    rdUnits: " Transfer Projects",
+    startupsUnits: " Registered Startups",
+    sovereigntyUnits: "% Autonomy Index",
+    yearLabel: "Academic & Fiscal Year",
+    legendTitle: "Annual Performance Growth Index (2021 - 2026)"
+  },
+  fr: {
+    title: "Suivi des Performances de l'Incubation",
+    centers: "Centres d'Incubation Actifs",
+    rd: "Recherches Commercialisées",
+    startups: "SMEs Enregistrées",
+    sovereignty: "Indice de Souveraineté",
+    desc: "Projections et acquisitions réelles du réseau national de centres d'incubation technologique.",
+    centersUnits: " Centres établis",
+    rdUnits: " Transferts technologiques",
+    startupsUnits: " Startups lancées",
+    sovereigntyUnits: "% Indice d'Autonomie",
+    yearLabel: "Année Académique & Fiscale",
+    legendTitle: "Indicateur de Croissance Annuel (2021 - 2026)"
+  }
+};
+
+const getMetricColor = (metric: "centers" | "rd" | "startups" | "sovereignty") => {
+  switch (metric) {
+    case "centers":
+      return "#bdae93"; // secondary gold
+    case "rd":
+      return "#dfaf87"; // sandy peach
+    case "startups":
+      return "#a89984"; // rich slate
+    case "sovereignty":
+      return "#8ec07c"; // mint forest
+    default:
+      return "#bdae93";
+  }
+};
+
+const CustomTooltip = ({ active, payload, label, unit }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-[#121212]/95 border border-[#bdae93]/30 p-4 rounded-lg shadow-2xl backdrop-blur-md">
+        <p className="font-sans text-[11px] text-on-surface-variant mb-2 font-bold uppercase tracking-wider">{`Year ${label}`}</p>
+        {payload.map((entry: any, index: number) => (
+          <p key={index} className="font-sans text-xs text-neutral-200 flex justify-between items-center gap-6">
+            <span className="opacity-75">{entry.name}:</span>
+            <span className="font-sans font-bold text-secondary">
+              {entry.value.toLocaleString()}{unit}
+            </span>
+          </p>
+        ))}
+      </div>
+    );
+  }
+  return null;
+};
 
 interface InnovationLeadersProps {
   lang: Language;
@@ -24,6 +149,7 @@ interface InnovationLeadersProps {
 
 export default function InnovationLeaders({ lang }: InnovationLeadersProps) {
   const t = translations[lang];
+  const [activeMetric, setActiveMetric] = useState<"centers" | "rd" | "startups" | "sovereignty">("centers");
 
   return (
     <div className="min-h-screen bg-background text-on-background pt-12">
@@ -313,6 +439,161 @@ export default function InnovationLeaders({ lang }: InnovationLeadersProps) {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Statutory Analytics Chart Section */}
+      <section className="py-24 border-t border-outline-variant/10 relative overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-secondary/5 via-background to-background" />
+        <div className="max-w-[1440px] mx-auto px-6 md:px-16">
+          {/* Header */}
+          <div className="max-w-3xl mb-12">
+            <span className="font-sans text-xs text-secondary tracking-[0.2em] block mb-4 uppercase font-bold">
+              {lang === "fr" ? "ANALYTIQUE DE L'INCUBATION STATUTAIRE" : "STATUTORY INCUBATION ANALYTICS"}
+            </span>
+            <h2 className="font-serif text-3xl md:text-5xl text-primary font-bold mb-6">
+              {lang === "fr" ? "Indicateurs de Performance Nationaux" : "National Performance Indicators"}
+            </h2>
+            <p className="font-sans text-sm md:text-base text-on-surface-variant leading-relaxed">
+              {t.systemStats}
+            </p>
+          </div>
+
+          {/* Interactive Grid Card */}
+          <div className="glass-container rounded-2xl p-6 md:p-10 shadow-2xl relative">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+              {/* Selector Controls */}
+              <div className="lg:col-span-1 flex flex-col justify-between h-full space-y-6">
+                <div className="space-y-4">
+                  <h3 className="font-serif text-lg text-primary font-bold mb-2">
+                    {chartLabels[lang].title}
+                  </h3>
+                  <p className="font-sans text-xs text-on-surface-variant leading-relaxed">
+                    {chartLabels[lang].desc}
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-3 w-full">
+                  <button
+                    onClick={() => setActiveMetric("centers")}
+                    className={`text-left px-5 py-3.5 rounded font-sans text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                      activeMetric === "centers"
+                        ? "bg-secondary text-black"
+                        : "bg-surface-container hover:bg-neutral-800 text-neutral-300"
+                    }`}
+                  >
+                    {chartLabels[lang].centers}
+                  </button>
+                  <button
+                    onClick={() => setActiveMetric("rd")}
+                    className={`text-left px-5 py-3.5 rounded font-sans text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                      activeMetric === "rd"
+                        ? "bg-secondary text-black"
+                        : "bg-surface-container hover:bg-neutral-800 text-neutral-300"
+                    }`}
+                  >
+                    {chartLabels[lang].rd}
+                  </button>
+                  <button
+                    onClick={() => setActiveMetric("startups")}
+                    className={`text-left px-5 py-3.5 rounded font-sans text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                      activeMetric === "startups"
+                        ? "bg-secondary text-black"
+                        : "bg-surface-container hover:bg-neutral-800 text-neutral-300"
+                    }`}
+                  >
+                    {chartLabels[lang].startups}
+                  </button>
+                  <button
+                    onClick={() => setActiveMetric("sovereignty")}
+                    className={`text-left px-5 py-3.5 rounded font-sans text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                      activeMetric === "sovereignty"
+                        ? "bg-secondary text-black"
+                        : "bg-surface-container hover:bg-neutral-800 text-neutral-300"
+                    }`}
+                  >
+                    {chartLabels[lang].sovereignty}
+                  </button>
+                </div>
+              </div>
+
+              {/* Graph Area */}
+              <div className="lg:col-span-3 flex flex-col justify-between min-h-[350px] md:min-h-[400px] w-full bg-black/35 rounded-xl border border-outline-variant/20 p-6">
+                {/* Legend/Info top of chart */}
+                <div className="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-outline-variant/10">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-3.5 h-3.5 rounded-sm shrink-0"
+                      style={{ backgroundColor: getMetricColor(activeMetric) }}
+                    />
+                    <span className="font-sans text-xs font-bold tracking-widest text-[#e5e5e5] uppercase">
+                      {chartLabels[lang][activeMetric]}
+                    </span>
+                  </div>
+                  <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-wider">
+                    {chartLabels[lang].legendTitle}
+                  </span>
+                </div>
+
+                <div className="w-full h-[320px] relative">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart
+                      data={STATUTORY_MILESTONES}
+                      margin={{ top: 10, right: 10, left: -20, bottom: 5 }}
+                      className="select-none"
+                    >
+                      <CartesianGrid
+                        strokeDasharray="3 3"
+                        stroke="rgba(255,255,255,0.04)"
+                        vertical={false}
+                      />
+                      <XAxis
+                        dataKey="year"
+                        stroke="#262626"
+                        tick={{ fill: "#a3a3a3", fontSize: 11, fontFamily: "var(--font-sans), sans-serif" }}
+                        tickLine={{ stroke: "#262626" }}
+                      />
+                      <YAxis
+                        stroke="#262626"
+                        tick={{ fill: "#a3a3a3", fontSize: 11, fontFamily: "var(--font-sans), sans-serif" }}
+                        tickLine={{ stroke: "#262626" }}
+                      />
+                      <Tooltip
+                        content={
+                          <CustomTooltip
+                            unit={
+                              activeMetric === "centers"
+                                ? chartLabels[lang].centersUnits
+                                : activeMetric === "rd"
+                                ? chartLabels[lang].rdUnits
+                                : activeMetric === "startups"
+                                ? chartLabels[lang].startupsUnits
+                                : chartLabels[lang].sovereigntyUnits
+                            }
+                          />
+                        }
+                        cursor={{ fill: "rgba(189, 174, 147, 0.05)" }}
+                      />
+                      <Bar
+                        dataKey={activeMetric}
+                        radius={[4, 4, 0, 0]}
+                        maxBarSize={60}
+                        animationDuration={800}
+                      >
+                        {STATUTORY_MILESTONES.map((entry, idx) => (
+                          <Cell
+                            key={`cell-${idx}`}
+                            fill={getMetricColor(activeMetric)}
+                            className="transition-colors duration-300"
+                          />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState } from "react";
 import { motion } from "motion/react";
 import { PARTNERS_DATA } from "../data";
 import { TabId } from "../types";
@@ -15,7 +16,56 @@ import {
   Shield,
   HelpCircle,
   ArrowRight,
+  Plus,
+  Minus,
 } from "lucide-react";
+
+const faqData = {
+  en: [
+    {
+      q: "What is the primary objective of NBTI Nextgen 2026?",
+      a: "NBTI Nextgen 2026 is an official federal initiative driven by the National Board for Technology Incubation (NBTI) and UKALD to foster high-tech entrepreneurship, secure economic sovereignty, and commercialize ready-to-scale research and development projects across Nigeria."
+    },
+    {
+      q: "Who is eligible to participate in the incubation program?",
+      a: "Prospective tech startups, local researchers with commercializable IP, and next-generation entrepreneurs working on deep-tech, clean energy, agricultural innovation, fintech, and advanced manufacturing are eligible to apply through official incubation hubs."
+    },
+    {
+      q: "What resources do prospective startups receive upon admission?",
+      a: "Admitted startups gain access to physical R&D sandboxes across 36 states, bilateral international certification runways via UKALD, up to 4% institutional statutory levy facilitation assistance, and direct connections to global venture ecosystems."
+    },
+    {
+      q: "How can international organizations partner with the Hub?",
+      a: "International partners, bilateral agencies, and technology conglomerates can align with the Secretariat by establishing joint tech transfer labs, cross-border investment tracks, or regional acceleration alliances."
+    },
+    {
+      q: "Does NBTI provide intellectual property protection for innovators?",
+      a: "Yes, preserving sovereignty over local innovations is a statutory core mission. We work directly with registry departments to provide robust IP assistance, legal sandboxes, and safe commercialization corridors."
+    }
+  ],
+  fr: [
+    {
+      q: "Quel est l'objectif principal de NBTI Nextgen 2026?",
+      a: "Il s'agit d'une initiative fédérale officielle menée par l'Office national de l'incubation technologique (NBTI) et UKALD pour stimuler l'entrepreneuriat technologique de pointe, garantir la souveraineté économique et commercialiser des projets de recherche et de développement prêts à être déployés au Nigeria."
+    },
+    {
+      q: "Qui est admissible à participer au programme d'incubation?",
+      a: "Les jeunes entreprises technologiques, les chercheurs locaux disposant de brevets commercialisables et les innovateurs de nouvelle génération travaillant sur les technologies profondes, l'énergie verte, l'agritech et l'industrie avancée."
+    },
+    {
+      q: "Quelles ressources les startups admises reçoivent-elles?",
+      a: "Elles ont accès à des environnements de prototypage physiques dans 36 États, à des parcours de certification internationaux bilatéraux via UKALD, au soutien lié à l'allocation statutaire de 4% et à des connexions de capital-risque mondiales."
+    },
+    {
+      q: "Comment les organisations internationales peuvent-elles s'associer?",
+      a: "Les partenaires mondiaux, institutions bilatérales et conglomérats peuvent collaborer avec le Secrétariat pour co-créer des laboratoires de transfert de technologies ou des corridors d'accréditation transnationaux."
+    },
+    {
+      q: "L'NBTI protège-t-il la propriété intellectuelle (IP) des innovateurs?",
+      a: "Oui, la préservation de la souveraineté de l'innovation locale est une mission statutaire centrale. Nous fournissons des raccordements légaux et des cadres d'enregistrement d'IP robustes pour les incubés."
+    }
+  ]
+};
 
 interface SovereignHubProps {
   setActiveTab: (tab: TabId) => void;
@@ -29,6 +79,7 @@ export default function SovereignHub({
   lang,
 }: SovereignHubProps) {
   const t = translations[lang];
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-background text-on-background">
@@ -44,22 +95,74 @@ export default function SovereignHub({
         />
         <div className="max-w-[1440px] mx-auto px-6 md:px-16 relative z-10 w-full text-center flex flex-col items-center">
           <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.12,
+                  delayChildren: 0.1,
+                },
+              },
+            }}
             className="space-y-8 w-full flex flex-col items-center"
           >
-            <span className="font-sans text-xs md:text-sm font-bold text-secondary tracking-widest block uppercase bg-secondary/10 px-4 py-1.5 rounded-full">
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 100, damping: 20 },
+                },
+              }}
+              className="font-sans text-xs md:text-sm font-bold text-secondary tracking-widest block uppercase bg-secondary/10 px-4 py-1.5 rounded-full"
+            >
               {t.heroSubtitle}
-            </span>
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl text-primary max-w-4xl leading-[1.1] animate-float">
+            </motion.span>
+            
+            <motion.h1
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 80, damping: 15 },
+                },
+              }}
+              className="font-serif text-4xl md:text-6xl lg:text-7xl text-primary max-w-4xl leading-[1.1] animate-float"
+            >
               {t.heroTitle}
-            </h1>
-            <p className="font-sans text-base md:text-xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
+            </motion.h1>
+            
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 25 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 90, damping: 18 },
+                },
+              }}
+              className="font-sans text-base md:text-xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed"
+            >
               {t.heroDesc}
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-6 justify-center w-full sm:w-auto">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 100, damping: 22 },
+                },
+              }}
+              className="flex flex-col sm:flex-row flex-wrap gap-4 pt-6 justify-center w-full sm:w-auto"
+            >
               <button
                 onClick={() => setActiveTab("partnerships")}
                 className="shimmer-btn bg-secondary-container text-on-secondary-container px-8 py-4 font-sans text-xs md:text-sm rounded-[4px] font-bold uppercase tracking-wider shadow-md w-full sm:w-auto cursor-pointer"
@@ -83,7 +186,7 @@ export default function SovereignHub({
                 {t.btnMeet}{" "}
                 <ArrowRight className="inline-block w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
               </button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -212,6 +315,71 @@ export default function SovereignHub({
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions Section */}
+      <section className="py-24 border-t border-outline-variant/10 bg-[#070707] relative overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-secondary/5 via-background to-background opacity-70" />
+        <div className="max-w-[1440px] mx-auto px-6 md:px-16">
+          <div className="text-center mb-16">
+            <span className="font-sans text-xs md:text-sm text-secondary uppercase tracking-[0.2em] block mb-4 font-bold">
+              {lang === "fr" ? "FOIRE AUX QUESTIONS" : "COMMON INQUIRIES"}
+            </span>
+            <h2 className="font-serif text-3xl md:text-5xl text-primary mb-4 leading-tight">
+              {lang === "fr" ? "Questions Fréquentes" : "Frequently Asked Questions"}
+            </h2>
+            <p className="font-sans text-sm md:text-base text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+              {lang === "fr" 
+                ? "Tout ce que vous devez savoir pour rejoindre l'écosystème d'incubation Nextgen en tant qu'innovateur ou partenaire officiel."
+                : "Clear answers to essential questions regarding the sovereign incubation pathway, partnerships, and Nextgen opportunities."}
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqData[lang].map((item, index) => {
+              const isOpen = openIndex === index;
+              return (
+                <div 
+                  key={index} 
+                  className={`glass-container border rounded-xl overflow-hidden transition-all duration-300 ${
+                    isOpen ? "border-[#bdae93]/50 bg-white/[0.02]" : "border-outline-variant/20 bg-transparent"
+                  }`}
+                >
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    className="w-full px-6 py-5 flex items-center justify-between text-left gap-4 hover:bg-white/[0.02] cursor-pointer group select-none"
+                  >
+                    <span className={`font-serif text-base md:text-lg transition-colors duration-200 ${
+                      isOpen ? "text-[#bdae93]" : "text-primary group-hover:text-[#bdae93]"
+                    }`}>
+                      {item.q}
+                    </span>
+                    <div className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
+                      isOpen ? "border-[#bdae93] bg-[#bdae93]/10" : "border-outline-variant/30 group-hover:border-[#bdae93]"
+                    }`}>
+                      {isOpen ? (
+                        <Minus className="w-4 h-4 text-[#bdae93]" />
+                      ) : (
+                        <Plus className="w-4 h-4 text-neutral-300 group-hover:text-[#bdae93]" />
+                      )}
+                    </div>
+                  </button>
+                  
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 pt-1 border-t border-outline-variant/10 font-sans text-xs md:text-sm text-on-surface-variant leading-relaxed">
+                      {item.a}
+                    </div>
+                  </motion.div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

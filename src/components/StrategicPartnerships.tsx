@@ -107,21 +107,74 @@ export default function StrategicPartnerships({
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.12,
+                  delayChildren: 0.1,
+                },
+              },
+            }}
             className="lg:col-span-7 space-y-8"
           >
-            <span className="font-sans text-xs md:text-sm text-secondary tracking-widest uppercase font-bold px-3 py-1 bg-secondary/15 rounded-sm inline-block">
+            <motion.span
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 100, damping: 20 },
+                },
+              }}
+              className="font-sans text-xs md:text-sm text-secondary tracking-widest uppercase font-bold px-3 py-1 bg-secondary/15 rounded-sm inline-block"
+            >
               {t.instMission}
-            </span>
-            <h2 className="font-serif text-3xl md:text-6xl text-primary leading-tight font-bold">
+            </motion.span>
+            
+            <motion.h2
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 80, damping: 15 },
+                },
+              }}
+              className="font-serif text-3xl md:text-6xl text-primary leading-tight font-bold"
+            >
               {t.partnershipHeroTitle}
-            </h2>
-            <p className="font-sans text-base md:text-lg text-on-surface-variant max-w-xl leading-relaxed">
+            </motion.h2>
+            
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 25 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 90, damping: 18 },
+                },
+              }}
+              className="font-sans text-base md:text-lg text-on-surface-variant max-w-xl leading-relaxed"
+            >
               {t.partnershipHeroDesc}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            </motion.p>
+            
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 15 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { type: "spring", stiffness: 100, damping: 22 },
+                },
+              }}
+              className="flex flex-col sm:flex-row gap-4 pt-4"
+            >
               <button
                 onClick={scrollHandler}
                 className="shimmer-btn bg-secondary text-black px-8 py-4 font-sans text-xs font-bold uppercase tracking-wider rounded shadow-sm cursor-pointer"
@@ -134,7 +187,7 @@ export default function StrategicPartnerships({
               >
                 {t.btnWhitepaper}
               </button>
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div

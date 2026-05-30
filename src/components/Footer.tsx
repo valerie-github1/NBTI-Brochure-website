@@ -78,15 +78,25 @@ export default function Footer({ setActiveTab, lang, setLang }: FooterProps) {
         {/* Left column */}
         <div className="max-w-sm space-y-6">
           <div className="flex flex-col items-start space-y-4">
-            <div className="w-20 h-20 rounded-full bg-white border border-outline-variant flex items-center justify-center p-2 shadow-lg overflow-hidden shrink-0 hover:scale-105 transition-all duration-300">
-              <img
-                alt="National Board for Technology Incubation Logo"
-                className="w-full h-full object-contain"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKQu5YwnkyAWX3ZkAq8hOUmXN3rOsFGczIougfm6rSNBZxjyUenhtB7amGN-djt-Ws42YHrxjpDupVFkuF4m37anEvFcUkkiMilnYgGVYHVAQ4Y6A8d9tSsU2Vo4CuVd66MGwAdhRXahQJZhnvvKUemB0k9ZsPeO9vphXeJ5Pux4D82qmlWkr6n-E5c3L-kBzVQWmMtRujVHgeq0d7CE-VxRSWEVNxO33c0eOcu7kZcEyRT3umiBSkkWwAvYfdEQ1oLNKxMul3S28"
-                referrerPolicy="no-referrer"
-              />
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-white border border-outline-variant flex items-center justify-center p-1.5 shadow-lg overflow-hidden shrink-0 hover:scale-105 transition-all duration-300 animate-fade-in" title="National Board for Technology Incubation (NBTI)">
+                <img
+                  alt="National Board for Technology Incubation Logo"
+                  className="w-full h-full object-contain"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKQu5YwnkyAWX3ZkAq8hOUmXN3rOsFGczIougfm6rSNBZxjyUenhtB7amGN-djt-Ws42YHrxjpDupVFkuF4m37anEvFcUkkiMilnYgGVYHVAQ4Y6A8d9tSsU2Vo4CuVd66MGwAdhRXahQJZhnvvKUemB0k9ZsPeO9vphXeJ5Pux4D82qmlWkr6n-E5c3L-kBzVQWmMtRujVHgeq0d7CE-VxRSWEVNxO33c0eOcu7kZcEyRT3umiBSkkWwAvYfdEQ1oLNKxMul3S28"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="w-16 h-16 rounded-full bg-white border border-outline-variant flex items-center justify-center p-1.5 shadow-lg overflow-hidden shrink-0 hover:scale-105 transition-all duration-300 animate-fade-in" title="UKALD Strategy & Advisory">
+                <img
+                  alt="UKALD Logo"
+                  className="w-full h-full object-contain scale-[1.12]"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNrqqFFCKlsdsI2HnTHCMAbGPt0lUMF-XgxTFsZNolBtCy1Vac9K2W7ZE0ll7DYW6uZ_ZJwBeevPP3YSbpS-j2zbot3SVSTeKwPxHbZJHhXYzUb9DakhZD4MfaDpCiwGXcAfFo5oZVWuuOCd-ripbJKF5b3ZfHj3RvoO2TsuLzch3LyukZnmt331Dx3Qc45Hr8eJrvSMJ8YEz9MZZx_V1SkwLgJU6XBGbuRzw3Lw1j3_IqJqZQKVOcwzLjnD6hCgWNOX-_M9eFY5o"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
             </div>
-            <div className="h-px w-24 bg-gradient-to-r from-transparent via-secondary to-transparent" />
+            <div className="h-px w-36 bg-gradient-to-r from-transparent via-secondary to-transparent" />
           </div>
           <span className="font-serif text-xl font-bold text-primary block">
             {t.nbtiNextgen}
@@ -94,6 +104,30 @@ export default function Footer({ setActiveTab, lang, setLang }: FooterProps) {
           <p className="font-sans text-xs md:text-sm text-on-surface-variant leading-relaxed">
             {t.nbtiDesc}
           </p>
+          <div className="pt-4 border-t border-white/5 space-y-2.5 font-sans text-xs">
+            <div className="flex items-center gap-2">
+              <span className="text-secondary font-bold">Email:</span>
+              <a
+                href="mailto:info@nextgeninnovation.ng"
+                className="text-white hover:underline hover:text-secondary transition-colors"
+                title="Send official inquiry to info@nextgeninnovation.ng"
+              >
+                info@nextgeninnovation.ng
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-secondary font-bold">Website:</span>
+              <a
+                href="https://www.nextgeninnovation.ng"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white hover:underline hover:text-secondary transition-colors"
+                title="Visit official portal www.nextgeninnovation.ng"
+              >
+                www.nextgeninnovation.ng
+              </a>
+            </div>
+          </div>
 
           {/* Social Icons matching mockups precisely including active shares */}
           <div className="flex flex-wrap gap-4 pt-4">
@@ -107,7 +141,7 @@ export default function Footer({ setActiveTab, lang, setLang }: FooterProps) {
               <Facebook className="w-5 h-5" />
             </a>
             <a
-              href="https://x.com/NigeriaNBTI"
+              href="https://x.com/NigeriaNBTI/status/2027664131843674380"
               target="_blank"
               rel="noreferrer"
               className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-secondary hover:text-black hover:border-secondary transition-all duration-300 shadow-sm"
@@ -128,13 +162,13 @@ export default function Footer({ setActiveTab, lang, setLang }: FooterProps) {
               href="https://www.linkedin.com/in/national-board-for-technology-incubation-92545a34b"
               target="_blank"
               rel="noreferrer"
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-secondary hover:text-black hover:border-secondary transition-all duration-300 shadow-sm"
-              title="LinkedIn"
+              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#bdae93]/30 hover:text-white hover:border-[#bdae93]/50 transition-all duration-300 shadow-sm opacity-60"
+              title="LinkedIn (Coming Soon)"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="https://youtube.com/@nbti-hq"
+              href="https://www.youtube.com/@nbti-hq"
               target="_blank"
               rel="noreferrer"
               className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-secondary hover:text-black hover:border-secondary transition-all duration-300 shadow-sm"
