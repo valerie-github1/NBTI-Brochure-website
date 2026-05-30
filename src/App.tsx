@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { TabId } from './types';
 import Navigation from './components/Navigation';
+import { motion, useScroll, useSpring } from 'motion/react';
 import SovereignHub from './components/SovereignHub';
 import StrategicPartnerships from './components/StrategicPartnerships';
 import InnovationLeaders from './components/InnovationLeaders';
@@ -21,6 +22,13 @@ export default function App() {
   const [whitepaperOpen, setWhitepaperOpen] = useState(false);
   const [lang, setLang] = useState<Language>('en');
   const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   // Scroll to top on tab change
   useEffect(() => {
@@ -46,6 +54,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-surface flex flex-col justify-between selection:bg-secondary-container selection:text-on-secondary-container text-on-surface antialiased overflow-x-hidden">
+      
+      {/* Scroll Progress Indicator */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-[3px] bg-[#bdae93] origin-left z-[100]" 
+        style={{ scaleX }}
+      />
       
       {/* Top Application Bar (Persistent Navigation) */}
       <Navigation 

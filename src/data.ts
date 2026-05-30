@@ -71,7 +71,7 @@ export const PARTNERS_DATA: Partner[] = [
   },
   {
     id: 'ukald',
-    name: 'UK-Africa Leadership Development',
+    name: 'UKALD',
     role: 'Co-Organiser',
     description: 'UK-based development and advisory organisation. Strategic co-organiser of the Canada–Africa Innovation Festival, Toronto.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBNrqqFFCKlsdsI2HnTHCMAbGPt0lUMF-XgxTFsZNolBtCy1Vac9K2W7ZE0ll7DYW6uZ_ZJwBeevPP3YSbpS-j2zbot3SVSTeKwPxHbZJHhXYzUb9DakhZD4MfaDpCiwGXcAfFo5oZVWuuOCd-ripbJKF5b3ZfHj3RvoO2TsuLzch3LyukZnmt331Dx3Qc45Hr8eJrvSMJ8YEz9MZZx_V1SkwLgJU6XBGbuRzw3Lw1j3_IqJqZQKVOcwzLjnD6hCgWNOX-_M9eFY5o'
