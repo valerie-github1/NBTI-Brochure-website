@@ -258,7 +258,7 @@ export default function StrategicPartnerships({
             </div>
           </div>
 
-          {/* Strategic Alliance (UKALD) Card */}
+          {/* Strategic Alliance UKALD Card */}
           <div className="lg:col-span-4 alliance-card rounded-xl bg-surface-container border border-outline-variant p-8 md:p-10 flex flex-col justify-between text-on-surface min-h-[400px] shadow-lg">
             <div>
               <div className="flex items-center gap-4 mb-6">
@@ -266,12 +266,11 @@ export default function StrategicPartnerships({
                   <Handshake className="w-6 h-6" />
                 </div>
                 <h3 className="font-serif text-xl md:text-2xl text-white font-bold">
-                  Strategic Alliance (UKALD)
+                  Strategic Alliance UKALD
                 </h3>
               </div>
               <p className="font-sans text-sm md:text-base text-on-surface-variant leading-relaxed mb-8">
-                Our partnership with the United Kingdom Agency for Local
-                Development (UKALD) focuses on localized economic resilience
+                Our partnership with UKALD focuses on localized economic resilience
                 through technology transfer and capacity building.
               </p>
             </div>
