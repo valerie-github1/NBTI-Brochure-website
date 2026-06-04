@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBTI Nextgen 2026 — Sovereign Innovation Ledger</title>
+    <!-- Premium Typography Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Design-Token Driven CSS Architecture (Separation of Concerns) -->
+    <style>
+        /* CSS custom properties representing the official design system */
+        :root {
+            /* Palette Definition */
+            --color-bg-base: #08080a;
+            --color-bg-surface: #111115;
+            --color-bg-card: #15151b;
+            
+            --color-primary-gold: #dfba73;
+            --color-primary-gold-rgb: 223, 186, 115;
+            --color-primary-gold-dim: #b8985c;
+            
+            --color-accent-teal: #1a3e30;
+            --color-accent-teal-rgb: 26, 62, 48;
+            --color-accent-mint: #4ade80;
+            
+            --color-text-primary: #f4f4f7;
+            --color-text-secondary: #9ea1b0;
+            --color-text-muted: #646775;
+            
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(223, 186, 115, 0.15);
+            
+            /* Typography Scale */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Space Grotesk', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Spacing Constants */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2.5rem;
+            --spacing-xl: 4rem;
+            
+            /* Glassmorphism & Effects */
+            --glass-background: rgba(17, 17, 21, 0.7);
+            --glass-backdrop-blur: blur(12px);
+            --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 4px 20px rgba(223, 186, 115, 0.1);
+        }
+
+        /* Base Resets */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--color-bg-base);
+            font-family: var(--font-sans);
+            color: var(--color-text-primary);
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            line-height: 1.6;
+            background: radial-gradient(circle at 50% 0%, rgba(26, 62, 48, 0.15) 0%, rgba(8, 8, 10, 0) 60%),
+                        radial-gradient(circle at 0% 100%, rgba(223, 186, 115, 0.03) 0%, rgba(8, 8, 10, 0) 40%);
+            background-attachment: fixed;
+        }
+
+        /* Layout Container Helpers */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Typography Utilities */
+        .text-display {
+            font-family: var(--font-display);
+            font-weight: 700;
+            letter-spacing: -0.015em;
+        }
+
+        .text-mono {
+            font-family: var(--font-mono);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .gradient-gold {
+            background: linear-gradient(135deg, var(--color-primary-gold) 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Header Component */
+        .header {
+            border-bottom: 1px solid var(--border-subtle);
+            background-color: var(--glass-background);
+            backdrop-filter: var(--glass-backdrop-blur);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition-smooth);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .logo-mark {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--color-accent-teal) 0%, var(--color-bg-base) 100%);
+            border: 1px solid var(--color-primary-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-weight: bold;
+            color: var(--color-primary-gold);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-text-primary);
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            color: var(--color-primary-gold);
+            letter-spacing: 0.15em;
+        }
+
+        .nav {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            transition: var(--transition-smooth);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary-gold);
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Main Content Structure */
+        .main-content {
+            flex-grow: 1;
+            padding: var(--spacing-lg) 0 var(--spacing-xl) 0;
+        }
+
+        /* Editorial Ledger Section */
+        .editorial-ledger {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        /* Featured Showcase Grid Card */
+        .featured-showcase {
+            background-color: var(--color-bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-premium);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .featured-showcase::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-accent-teal) 0%, var(--color-primary-gold) 100%);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        @media (min-width: 992px) {
+            .showcase-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+                align-items: stretch;
+            }
+        }
+
+        .showcase-body {
+            padding: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .showcase-body {
+                padding: var(--spacing-lg);
+            }
+        }
+
+        .showcase-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .badge-premium {
+            background: rgba(223, 186, 115, 0.1);
+            border: 1px solid var(--color-primary-gold-dim);
+            color: var(--color-primary-gold);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+
+        .date-stamp {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            border-left: 1px solid var(--border-subtle);
+            padding-left: var(--spacing-sm);
+        }
+
+        .showcase-headline {
+            font-size: 2rem;
+            line-height: 1.15;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-primary);
+        }
+
+        @media (min-width: 768px) {
+            .showcase-headline {
+                font-size: 2.75rem;
+            }
+        }
+
+        .showcase-subhead {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-primary-gold);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.4;
+        }
+
+        .showcase-prologue {
+            color: var(--color-text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+            border-left: 2px solid var(--color-accent-teal);
+            padding-left: var(--spacing-sm);
+        }
+
+        .showcase-editorial-context {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .blockquote-tribute {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+
+        .tribute-text {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--color-text-primary);
+            line-height: 1.5;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .tribute-author {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: var(--color-primary-gold);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Institutional Congratulation Desk */
+        .editorial-desk {
+            background-color: rgba(26, 62, 48, 0.15);
+            border: 1px dashed rgba(223, 186, 115, 0.2);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .desk-title {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--color-primary-gold);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .desk-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(223, 186, 115, 0.3) 0%, transparent 100%);
+        }
+
+        .desk-quote {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .desk-sign-off {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        /* Image Frame Component */
+        .showcase-media {
+            position: relative;
+            background-color: var(--color-bg-base);
+            border-top: 1px solid var(--border-subtle);
+            min-height: 350px;
+            overflow: hidden;
+        }
+
+        @media (min-width: 992px) {
+            .showcase-media {
+                border-top: 0;
+                border-left: 1px solid var(--border-subtle);
+            }
+        }
+
+        .media-frame {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .media-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            max-height: 550px;
+            transition: var(--transition-smooth);
+        }
+
+        @media (min-width: 992px) {
+            .media-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                max-height: none;
+            }
+        }
+
+        .media-img:hover {
+            transform: scale(1.02);
+        }
+
+        .media-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, rgba(8, 8, 10, 0) 0%, rgba(8, 8, 10, 0.9) 100%);
+            padding: var(--spacing-md);
+            z-index: 2;
+        }
+
+        .media-caption {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: var(--color-text-primary);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Grid Archive for Growth Component Section */
+        .archive-section {
+            margin-top: var(--spacing-xl);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 2px solid var(--border-subtle);
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background-color: var(--color-primary-gold);
+        }
+
+        .section-subtitle-mono {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-primary-gold);
+        }
+
+        /* Clean, Responsive 2-column component grid */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        @media (min-width: 768px) {
+            .archive-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Modular Grid Cards */
+        .archive-card {
+            background-color: var(--color-bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .archive-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(223, 186, 115, 0.25);
+            box-shadow: var(--shadow-glow), 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .archive-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .card-category {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--color-primary-gold);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+
+        .card-status {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            padding: 2px 8px;
+            border-radius: 20px;
+            color: var(--color-text-muted);
+        }
+
+        .archive-card-content h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .archive-card-content p {
+            color: var(--color-text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .placeholder-tag {
+            margin-top: var(--spacing-md);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            border-top: 1px solid var(--border-subtle);
+            padding-top: var(--spacing-sm);
+        }
+
+        /* Footer System */
+        .footer {
+            background-color: var(--color-bg-base);
+            border-top: 1px solid var(--border-subtle);
+            padding: var(--spacing-lg) 0;
+            margin-top: var(--spacing-xl);
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        .footer-text p {
+            margin-bottom: 4px;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-weight: bold;
+            color: var(--color-text-primary);
+        }
+
+        .footer-legal {
+            color: var(--color-text-muted);
+            font-size: 0.75rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-contacts {
+                align-items: flex-end;
+            }
+        }
+
+        .footer-contact-link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-size: 0.8rem;
+        }
+
+        .footer-contact-link:hover {
+            color: var(--color-primary-gold);
+        }
+
+        .footer-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Semantic Component: Header (Persistent Ledger Brand Bar) -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo-group">
+                <div class="logo-mark">⚡</div>
+                <div class="logo-text">
+                    <span class="logo-title">NBTI Nextgen 2026</span>
+                    <span class="logo-subtitle">Sovereign Innovation Ledger</span>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="#showcase" class="nav-link">Featured Spotlight</a>
+                <a href="#archive" class="nav-link">Dispatches & Milestones</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Semantic Component: Main Layout Body -->
+    <main class="main-content container">
+
+        <!-- Component: Featured Spotlight -->
+        <article id="showcase" class="editorial-ledger">
+            <div class="featured-showcase">
+                <div class="showcase-grid">
+                    
+                    <!-- Content Panel -->
+                    <div class="showcase-body">
+                        <div class="showcase-meta">
+                            <span class="badge-premium">Special Bulletin</span>
+                            <time class="date-stamp" datetime="2026-05-30">May 30, 2026</time>
+                        </div>
+                        
+                        <h1 class="showcase-headline text-display gradient-gold">
+                            MADE IN NIGERIA, CAPITALIZED IN TORONTO
+                        </h1>
+                        
+                        <div class="showcase-subhead">
+                            NBTI’s Next-Gen Innovators' Challenge Captain — <br>
+                            Dr. K K Raji Dazzles Global Investors, Seals Cross-Border Tech Pipelines
+                        </div>
+
+                        <p class="showcase-prologue">
+                            TIC Abeokuta Commends the NEXT-GEN INNOVATION CHALLENGE, Hailing the "Czar of TECHNOLOGY INCUBATION PROGRAMME" for Transitioning Nigerian Research from Academic Shelves to International Marketplaces.
+                        </p>
+
+                        <div class="showcase-editorial-context">
+                            <p style="margin-bottom: 1rem;">
+                                In a historic geopolitical leap for African technology commercialization, Nigeria’s innovation ecosystem took center stage today at the prestigious <strong>Canada-Africa Innovation Festival</strong> in Toronto, Canada. The National Board for Technology Incubation (NBTI) successfully presented the second edition of the <strong>NEXT-GEN Innovation Challenge 2026</strong> to a global audience of venture capitalists, institutional partners, and Canadian tech leaders.
+                            </p>
+                            <p style="margin-bottom: 1rem;">
+                                Delivering a powerful opening address, the Director-General and CEO of the NBTI, <strong>Dr. Kazeem Kolawole Raji, FCIPM (UK), FPMA (UK)</strong>—widely regarded as the <em>“Czar of the Technology Incubation Programme in Nigeria”</em>—projected the nation’s aggressive industrialization mandate. He warmly commended the organizers—Efosa, Osas, and the entire team at the <strong>Africa Impact Initiative</strong>—for putting African ingenuity on the global map. 
+                            </p>
+                            <p style="margin-bottom: 1rem;">
+                                Unveiling the statutory mandate of the NBTI as a bedrock agency under the Federal Ministry of Innovation, Science, and Technology, Dr. Raji declared: <em>"The ultimate joy of being in the diaspora is what you can structurally give back to the society where you were born. For too long, valuable research ended up on shelves and in institutional archives. The Federal Government has decisively stopped that trend. NBTI is empowered to convert those raw research outcomes into market-ready products, sustainable jobs, and generational wealth."</em>
+                            </p>
+                            <p>
+                                Addressing continental innovators during the high-stakes investment pitch sessions, Dr. Raji labeled all participants as <strong>"winners"</strong> while delivering a vital regulatory charge: any innovator scaling operations within the Nigerian corridor must strictly adhere to compliance, formalize corporate registration, and aggressively secure Intellectual Property (IP) rights to shield their patents from theft.
+                            </p>
+                        </div>
+
+                        <!-- Blockquote: Tribute / Diaspora Loop -->
+                        <div class="blockquote-tribute">
+                            <p class="tribute-text">
+                                "The ultimate joy of being in the diaspora is what you can structurally give back to the society where you were born."
+                            </p>
+                            <div class="tribute-author">— Dr. Kazeem Kolawole Raji</div>
+                        </div>
+
+                        <!-- Institutional Reaction Desk -->
+                        <div class="editorial-desk">
+                            <div class="desk-title">Ecosystem Solidarity: TIC Abeokuta Salutes Transformational Leadership</div>
+                            <blockquote class="desk-quote">
+                                "On behalf of TIC Abeokuta, we extend our proudest congratulations to our visionary DG/CEO, <strong>Dr. Kazeem Kolawole Raji FCIMP(UK), FPMA(Uk)</strong> on this historic global outing. Your brilliant presentation in Toronto proves that when Nigerian innovation is structurally incubated, it can lead anywhere in the world. Under your value-driven stewardship, the Technology Incubation Programme (TIP) has officially become a premium global pathway for economic transformation."
+                            </blockquote>
+                            <div class="desk-sign-off">
+                                <span>— Gabriel Olusanya Oguntayo, NIM, NIMN</span>
+                                <strong>Centre Manager, TIC Abeokuta</strong>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- Media Asset Panel -->
+                    <div class="showcase-media">
+                        <div class="media-frame">
+                            <img src="IMG-20260531-WA0003.jpg" alt="Dr. Kazeem Kolawole Raji, Director-General and CEO of NBTI at the Canada-Africa Innovation Festival" class="media-img" loading="lazy">
+                            <div class="media-overlay">
+                                <span class="media-caption">
+                                    Dr. Kazeem Kolawole Raji presenting the NEXT-GEN Innovation Challenge at the Canada-Africa Innovation Festival, Toronto.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </article>
+
+        <!-- Component: Subsequent Dispatches & Milestones (Grid Archive for Growth) -->
+        <section id="archive" class="archive-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Subsequent Dispatches & Milestones</h2>
+                    <p style="color: var(--color-text-secondary); font-size: 0.9rem; margin-top: 12px;">The systematic registry of strategic expansion, local impacts, and commercialization breakthroughs.</p>
+                </div>
+                <span class="section-subtitle-mono text-mono">Ecosystem Ledger</span>
+            </div>
+            
+            <div class="archive-grid">
+                
+                <!-- Card 1: Intellectual Property & Compliance -->
+                <article class="archive-card">
+                    <div>
+                        <div class="archive-card-header">
+                            <span class="card-category text-mono">Operational Directive</span>
+                            <span class="card-status text-mono">Active Focus</span>
+                        </div>
+                        <div class="archive-card-content">
+                            <h4>IP Protection & Regulatory Onboarding</h4>
+                            <p>Enforcing rigorous patent-shielding compliance, corporate registration, and regulatory protection pathways for all active domestic sandboxes scaling within the Nigerian technology corridors.</p>
+                        </div>
+                    </div>
+                    <div class="placeholder-tag text-mono">
+                        Systematic Block ID: MD-001
+                    </div>
+                </article>
+
+                <!-- Card 2: Strategic Investment Pipelines -->
+                <article class="archive-card">
+                    <div>
+                        <div class="archive-card-header">
+                            <span class="card-category text-mono">Diaspora Leverage</span>
+                            <span class="card-status text-mono">Expanding</span>
+                        </div>
+                        <div class="archive-card-content">
+                            <h4>Cross-Border VC Syndicate Alignment</h4>
+                            <p>Expanding the Toronto-Toronto investment channel into a structured multi-national funding bridge linking high-potential incubatees with institutional capital syndicates.</p>
+                        </div>
+                    </div>
+                    <div class="placeholder-tag text-mono">
+                        Systematic Block ID: MD-002
+                    </div>
+                </article>
+
+                <!-- Card 3: Deep-Tech Incubation Network (Growth Slot) -->
+                <article class="archive-card" style="opacity: 0.85;">
+                    <div>
+                        <div class="archive-card-header">
+                            <span class="card-category text-mono">Local Incubation</span>
+                            <span class="card-status text-mono">Planned</span>
+                        </div>
+                        <div class="archive-card-content">
+                            <h4>Ecosystem Scaling at TIC Abeokuta</h4>
+                            <p>Establishing localized commercialization sprints to lift breakthrough scientific research and indigenous prototypes off academic shelves and onto marketplace shelves.</p>
+                        </div>
+                    </div>
+                    <div class="placeholder-tag text-mono">
+                        Systematic Block ID: MD-003 [Empty Slot for Expansion]
+                    </div>
+                </article>
+
+                <!-- Card 4: Global Fellowship (Growth Slot) -->
+                <article class="archive-card" style="opacity: 0.85;">
+                    <div>
+                        <div class="archive-card-header">
+                            <span class="card-category text-mono">Innovation Fellowship</span>
+                            <span class="card-status text-mono">Planned</span>
+                        </div>
+                        <div class="archive-card-content">
+                            <h4>Next-Gen Scientific Advisory Board</h4>
+                            <p>Curating a pipeline of international mentors and scientific advisors from top-tier research institutes to guide digital innovators in robust prototype scaling.</p>
+                        </div>
+                    </div>
+                    <div class="placeholder-tag text-mono">
+                        Systematic Block ID: MD-004 [Empty Slot for Expansion]
+                    </div>
+                </article>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Semantic Component: Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-text">
+                <span class="footer-brand text-display" style="display: block; margin-bottom: 8px;">National Board for Technology Incubation</span>
+                <p class="footer-legal">© 2026 NBTI. Authorized Federal Innovation Initiative. All Rights Reserved.</p>
+                <p class="footer-legal" style="font-family: var(--font-mono); margin-top: 4px;">Press Desk: Becky Thorpe, Public Relations Officer, TIC Abeokuta.</p>
+            </div>
+            <div class="footer-contacts">
+                <a href="mailto:info@nextgeninnovation.ng" class="footer-contact-link text-mono">info@nextgeninnovation.ng</a>
+                <a href="https://www.nextgeninnovation.ng" target="_blank" class="footer-contact-link text-mono">www.nextgeninnovation.ng</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

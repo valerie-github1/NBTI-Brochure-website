@@ -9,11 +9,11 @@ export const translations = {
   en: {
     // Navigation & General
     nbtiNextgen: "NBTI NEXTGEN 2026",
-    navHub: "INCUBATION HUB",
-    navPartnerships: "PARTNERSHIP",
-    navLeaders: "INNOVATION LEADERS",
+    navHub: "HUB",
+    navPartnerships: "ABOUT",
+    navLeaders: "LEADERS",
     navContactItem: "CONTACT",
-    navContact: "CONTACT SECRETARIAT",
+    navContact: "CONTACT",
     langEn: "English",
     langFr: "Français",
 
@@ -113,11 +113,11 @@ export const translations = {
   fr: {
     // Navigation & General
     nbtiNextgen: "NBTI NEXTGEN 2026",
-    navHub: "PÔLE D'INCUBATION",
-    navPartnerships: "PARTENARIAT",
-    navLeaders: "LEADERS DE L'INNOVATION",
+    navHub: "HUB",
+    navPartnerships: "À PROPOS",
+    navLeaders: "LEADERS",
     navContactItem: "CONTACT",
-    navContact: "CONTACTER LE SECRÉTARIAT",
+    navContact: "CONTACT",
     langEn: "English",
     langFr: "Français",
 

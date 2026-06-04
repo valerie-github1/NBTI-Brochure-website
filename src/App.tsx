@@ -6,13 +6,14 @@
 import { useState, useEffect } from 'react';
 import { TabId } from './types';
 import Navigation from './components/Navigation';
-import { motion, useScroll, useSpring } from 'motion/react';
+import { motion, useScroll, useSpring, AnimatePresence } from 'motion/react';
 import SovereignHub from './components/SovereignHub';
 import StrategicPartnerships from './components/StrategicPartnerships';
 import InnovationLeaders from './components/InnovationLeaders';
 import SecretariatModal from './components/SecretariatModal';
 import WhitepaperModal from './components/WhitepaperModal';
 import Footer from './components/Footer';
+import PageLoader from './components/PageLoader';
 import { Language } from './translations';
 import { ArrowUp } from 'lucide-react';
 
@@ -22,6 +23,7 @@ export default function App() {
   const [whitepaperOpen, setWhitepaperOpen] = useState(false);
   const [lang, setLang] = useState<Language>('en');
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -53,7 +55,22 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col justify-between selection:bg-secondary-container selection:text-on-secondary-container text-on-surface antialiased overflow-x-hidden">
+    <>
+      <AnimatePresence mode="wait">
+        {loading && (
+          <motion.div
+            key="page-loader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="fixed inset-0 z-[200]"
+          >
+            <PageLoader lang={lang} onComplete={() => setLoading(false)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="min-h-screen bg-surface flex flex-col justify-between selection:bg-secondary-container selection:text-on-secondary-container text-on-surface antialiased overflow-x-hidden">
       
       {/* Scroll Progress Indicator */}
       <motion.div 
@@ -122,6 +139,7 @@ export default function App() {
       )}
       
     </div>
+    </>
   );
 }
 
