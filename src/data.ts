@@ -80,7 +80,7 @@ export const PARTNERS_DATA: Partner[] = [
     id: 'nbti',
     name: 'NBTI',
     role: 'Lead Host',
-    description: 'National Board for Technology Incubation; Federal Republic of Nigeria. Anchoring Africa\'s innovation sovereignty agenda.',
+    description: 'National Board for Technology Incubation; Federal Republic of Nigeria. Anchoring Africa\'s innovation advancement agenda.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCKQu5YwnkyAWX3ZkAq8hOUmXN3rOsFGczIougfm6rSNBZxjyUenhtB7amGN-djt-Ws42YHrxjpDupVFkuF4m37anEvFcUkkiMilnYgGVYHVAQ4Y6A8d9tSsU2Vo4CuVd66MGwAdhRXahQJZhnvvKUemB0k9ZsPeO9vphXeJ5Pux4D82qmlWkr6n-E5c3L-kBzVQWmMtRujVHgeq0d7CE-VxRSWEVNxO33c0eOcu7kZcEyRT3umiBSkkWwAvYfdEQ1oLNKxMul3S28'
   },
   {

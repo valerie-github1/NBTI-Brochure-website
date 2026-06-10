@@ -8,6 +8,7 @@ import { motion } from "motion/react";
 import { PARTNERS_DATA } from "../data";
 import { TabId } from "../types";
 import { Language, translations } from "../translations";
+import PastEditionsArchive from "./PastEditionsArchive";
 import {
   Cpu,
   Building,
@@ -24,7 +25,7 @@ const faqData = {
   en: [
     {
       q: "What is the primary objective of NBTI Nextgen 2026?",
-      a: "NBTI Nextgen 2026 is an official federal initiative driven by the National Board for Technology Incubation (NBTI) and UKALD to foster high-tech entrepreneurship, secure economic sovereignty, and commercialize ready-to-scale research and development projects across Nigeria."
+      a: "NBTI Nextgen 2026 is an official federal initiative driven by the National Board for Technology Incubation (NBTI) and UKALD to foster high-tech entrepreneurship, secure economic self-reliance, and commercialize ready-to-scale research and development projects across Nigeria."
     },
     {
       q: "Who is eligible to participate in the incubation program?",
@@ -40,13 +41,13 @@ const faqData = {
     },
     {
       q: "Does NBTI provide intellectual property protection for innovators?",
-      a: "Yes, preserving sovereignty over local innovations is a statutory core mission. We work directly with registry departments to provide robust IP assistance, legal sandboxes, and safe commercialization corridors."
+      a: "Yes, preserving ownership over local innovations is a statutory core mission. We work directly with registry departments to provide robust IP assistance, legal sandboxes, and safe commercialization corridors."
     }
   ],
   fr: [
     {
       q: "Quel est l'objectif principal de NBTI Nextgen 2026?",
-      a: "Il s'agit d'une initiative fédérale officielle menée par l'Office national de l'incubation technologique (NBTI) et UKALD pour stimuler l'entrepreneuriat technologique de pointe, garantir la souveraineté économique et commercialiser des projets de recherche et de développement prêts à être déployés au Nigeria."
+      a: "Il s'agit d'une initiative fédérale officielle menée par l'Office national de l'incubation technologique (NBTI) et UKALD pour stimuler l'entrepreneuriat technologique de pointe, garantir l'autosuffisance économique et commercialiser des projets de recherche et de développement prêts à être déployés au Nigeria."
     },
     {
       q: "Qui est admissible à participer au programme d'incubation?",
@@ -62,7 +63,7 @@ const faqData = {
     },
     {
       q: "L'NBTI protège-t-il la propriété intellectuelle (IP) des innovateurs?",
-      a: "Oui, la préservation de la souveraineté de l'innovation locale est une mission statutaire centrale. Nous fournissons des raccordements légaux et des cadres d'enregistrement d'IP robustes pour les incubés."
+      a: "Oui, la préservation de la propriété de l'innovation locale est une mission statutaire centrale. Nous fournissons des raccordements légaux et des cadres d'enregistrement d'IP robustes pour les incubés."
     }
   ]
 };
@@ -164,7 +165,7 @@ export default function SovereignHub({
               className="flex flex-col sm:flex-row flex-wrap gap-4 pt-6 justify-center w-full sm:w-auto"
             >
               <button
-                onClick={() => setActiveTab("partnerships")}
+                onClick={() => setActiveTab("mandate")}
                 className="shimmer-btn bg-secondary-container text-on-secondary-container px-8 py-4 font-sans text-xs md:text-sm rounded-[4px] font-bold uppercase tracking-wider shadow-md w-full sm:w-auto cursor-pointer"
               >
                 {t.btnExplore}
@@ -180,7 +181,7 @@ export default function SovereignHub({
               </a>
 
               <button
-                onClick={() => setActiveTab("leaders")}
+                onClick={() => setActiveTab("leadership")}
                 className="text-primary px-6 py-4 font-sans text-xs md:text-sm rounded-[4px] font-bold uppercase tracking-wider hover:text-secondary group transition-all"
               >
                 {t.btnMeet}{" "}
@@ -318,6 +319,9 @@ export default function SovereignHub({
           </div>
         </div>
       </section>
+
+      {/* Past Cycle Archive Accordion Section */}
+      <PastEditionsArchive lang={lang} />
 
       {/* Frequently Asked Questions Section */}
       <section className="py-24 border-t border-outline-variant/10 bg-[#070707] relative overflow-hidden">

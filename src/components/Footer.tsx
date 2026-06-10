@@ -54,8 +54,8 @@ export default function Footer({ setActiveTab, lang, setLang }: FooterProps) {
 
   const handleShare = () => {
     const shareData = {
-      title: "NBTI NextGen 2026 Sovereign Hub",
-      text: "Access the Canada-Africa Innovation Portal & technological sovereignty roadmap",
+      title: "NBTI NextGen 2026 Innovation Portal",
+      text: "Access the Canada-Africa Innovation Portal & technological advancement roadmap",
       url: window.location.href,
     };
 
@@ -195,26 +195,34 @@ export default function Footer({ setActiveTab, lang, setLang }: FooterProps) {
             <ul className="space-y-4 font-sans text-xs md:text-sm">
               <li>
                 <button
-                  onClick={() => setActiveTab("partnerships")}
+                  onClick={() => setActiveTab("mandate")}
                   className="text-on-surface-variant hover:text-primary transition-colors text-left cursor-pointer"
                 >
-                  {t.opportunities}
+                  {t.navMandate}
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => setActiveTab("leaders")}
+                  onClick={() => setActiveTab("footprint")}
+                  className="text-on-surface-variant hover:text-primary transition-colors text-left cursor-pointer"
+                >
+                  {t.navFootprint}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActiveTab("framework")}
+                  className="text-on-surface-variant hover:text-primary transition-colors text-left cursor-pointer"
+                >
+                  {t.navFramework}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setActiveTab("leadership")}
                   className="text-on-surface-variant hover:text-primary transition-colors text-left cursor-pointer"
                 >
                   {t.navLeaders}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => setActiveTab("hub")}
-                  className="text-on-surface-variant hover:text-primary transition-colors text-left cursor-pointer"
-                >
-                  {t.navHub}
                 </button>
               </li>
             </ul>

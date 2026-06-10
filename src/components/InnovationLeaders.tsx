@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { PIONEERS_DATA, MILESTONES_DATA } from "../data";
+import { PIONEERS_DATA, MILESTONES_DATA, PARTNERS_DATA } from "../data";
 import {
   TrendingUp,
   Zap,
@@ -19,6 +19,7 @@ import {
   Cpu,
   Activity,
   Award,
+  Handshake,
 } from "lucide-react";
 import {
   BarChart,
@@ -84,7 +85,7 @@ const chartLabels = {
     centers: "Active Hub Centers",
     rd: "R&D Commercialized",
     startups: "Graduated Startups",
-    sovereignty: "Sovereignty Rating",
+    sovereignty: "Autonomy Rating",
     desc: "National board capacity projections and actual achievements across technology incubation centers.",
     centersUnits: " Centers established",
     rdUnits: " Transfer Projects",
@@ -98,7 +99,7 @@ const chartLabels = {
     centers: "Centres d'Incubation Actifs",
     rd: "Recherches Commercialisées",
     startups: "SMEs Enregistrées",
-    sovereignty: "Indice de Souveraineté",
+    sovereignty: "Indice d'Autonomie",
     desc: "Projections et acquisitions réelles du réseau national de centres d'incubation technologique.",
     centersUnits: " Centres établis",
     rdUnits: " Transferts technologiques",
@@ -424,7 +425,7 @@ export default function InnovationLeaders({ lang }: InnovationLeadersProps) {
                 Scan to Connect
               </h3>
               <p className="font-sans text-sm md:text-base text-on-surface-variant mb-8 max-w-lg leading-relaxed">
-                Access the NBTI Sovereign Portal to engage directly with these
+                Access the NBTI Innovation Portal to engage directly with these
                 leaders, review strategic whitepapers, and join the pan-African
                 innovation network.
               </p>
@@ -439,6 +440,68 @@ export default function InnovationLeaders({ lang }: InnovationLeadersProps) {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Ecosystem Partners (Subheading of Pioneers) */}
+      <section className="py-24 border-t border-outline-variant/10 bg-surface-container-low/35" id="partners">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-16">
+          <div className="max-w-3xl mb-16">
+            <span className="font-sans text-xs text-secondary tracking-[0.2em] block mb-4 uppercase font-bold">
+              {lang === "fr" ? "MEMBRES DE L'ALLIANCE DE L'ÉCOSYSTÈME" : "ECOSYSTEM ALLIANCE MEMBERS"}
+            </span>
+            <h2 className="font-serif text-3xl md:text-5xl text-primary font-bold mb-6">
+              {lang === "fr" ? "Partenaires Stratégiques d'Innovation" : "Strategic Ecosystem Partners"}
+            </h2>
+            <p className="font-sans text-sm md:text-base text-on-surface-variant leading-relaxed">
+              {lang === "fr"
+                ? "L'alliance officielle d'institutions fédérales et mondiales soutenant notre agenda d'accélération technologique."
+                : "Supporting the Nextgen Innovation Challenge 2026 are premier institutional partners driving technological advancement and cross-border research commercialization."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {PARTNERS_DATA.map((partner, index) => (
+              <motion.div
+                key={partner.id}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="glass-card p-8 lg:p-10 rounded-xl flex flex-col group hover:border-secondary hover:-translate-y-2 hover:shadow-xl transition-all duration-500 shadow-sm"
+              >
+                <div className="flex items-start justify-between mb-8">
+                  {partner.image === "handshake" ? (
+                    <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center text-primary group-hover:scale-105 transition-transform duration-300">
+                      <Handshake className="w-6 h-6 text-secondary" />
+                    </div>
+                  ) : (
+                    <img
+                      alt={partner.name}
+                      className="h-10 w-auto object-contain max-w-[124px] filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                      src={partner.image}
+                      referrerPolicy="no-referrer"
+                    />
+                  )}
+                  <span className="font-sans text-[10px] bg-[#bdae93]/10 text-secondary px-3 py-1.5 rounded uppercase tracking-wider font-bold">
+                    {lang === "fr" && partner.role === "REGULATORY SPONSOR" ? "PARRAIN RÉGLEMENTAIRE" :
+                     lang === "fr" && partner.role === "STRATEGIC SECRETARIAT" ? "SECRÉTARIAT STRATÉGIQUE" :
+                     lang === "fr" && partner.role === "GLOBAL ALLIANCE" ? "ALLIANCE GLOBALE" : partner.role}
+                  </span>
+                </div>
+                <h3 className="font-serif text-xl md:text-2xl text-primary mb-4 font-bold">
+                  {partner.name}
+                </h3>
+                <p className="font-sans text-sm text-on-surface-variant leading-relaxed flex-grow">
+                  {lang === "fr" ? (
+                    partner.id === "nbti" ? "L'agence gouvernementale officielle chargée d'établir, de surveiller et de réguler les pôles nationaux d'incubation technologique au Nigeria." :
+                    partner.id === "ukald" ? "Diriger la coopération technologique internationale, la mobilisation des capitaux et les corridors bilatéraux d'accréditation transnationaux." :
+                    "Soutenant activement la numérisation régionale, l'intégration des écosystèmes et le transfert de technologies résilientes à travers le continent africain."
+                  ) : partner.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

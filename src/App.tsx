@@ -9,6 +9,8 @@ import Navigation from './components/Navigation';
 import { motion, useScroll, useSpring, AnimatePresence } from 'motion/react';
 import SovereignHub from './components/SovereignHub';
 import StrategicPartnerships from './components/StrategicPartnerships';
+import GlobalFootprint from './components/GlobalFootprint';
+import SovereignFramework from './components/SovereignFramework';
 import InnovationLeaders from './components/InnovationLeaders';
 import SecretariatModal from './components/SecretariatModal';
 import WhitepaperModal from './components/WhitepaperModal';
@@ -18,7 +20,7 @@ import { Language } from './translations';
 import { ArrowUp } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('hub');
+  const [activeTab, setActiveTab] = useState<TabId>('mandate');
   const [contactOpen, setContactOpen] = useState(false);
   const [whitepaperOpen, setWhitepaperOpen] = useState(false);
   const [lang, setLang] = useState<Language>('en');
@@ -97,15 +99,26 @@ export default function App() {
           />
         )}
         
-        {activeTab === 'partnerships' && (
+        {activeTab === 'mandate' && (
           <StrategicPartnerships 
             onOpenWhitepaper={() => setWhitepaperOpen(true)} 
             onOpenContact={() => setContactOpen(true)} 
             lang={lang}
           />
         )}
+
+        {activeTab === 'footprint' && (
+          <GlobalFootprint lang={lang} />
+        )}
+
+        {activeTab === 'framework' && (
+          <SovereignFramework 
+            onOpenWhitepaper={() => setWhitepaperOpen(true)} 
+            lang={lang} 
+          />
+        )}
         
-        {activeTab === 'leaders' && (
+        {activeTab === 'leadership' && (
           <InnovationLeaders lang={lang} />
         )}
       </main>

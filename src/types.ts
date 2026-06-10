@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-export type TabId = 'hub' | 'partnerships' | 'leaders';
+export type TabId = 'hub' | 'mandate' | 'footprint' | 'framework' | 'leadership';
 
 export interface Pioneer {
   id: string;

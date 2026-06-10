@@ -9,18 +9,20 @@ export const translations = {
   en: {
     // Navigation & General
     nbtiNextgen: "NBTI NEXTGEN 2026",
-    navHub: "HUB",
-    navPartnerships: "ABOUT",
-    navLeaders: "LEADERS",
+    navPartnership: "PARTNERSHIP",
+    navMandate: "OUR MANDATE",
+    navFootprint: "GLOBAL FOOTPRINT",
+    navFramework: "FRAMEWORK",
+    navLeaders: "PIONEERS",
     navContactItem: "CONTACT",
     navContact: "CONTACT",
     langEn: "English",
     langFr: "Français",
 
-    // SovereignHub
+    // Partnership (formerly SovereignHub)
     heroSubtitle: "AFRICA'S NEXT INNOVATION FRONTIERS",
     heroTitle: "Accelerating Africa's Next Innovation Frontiers",
-    heroDesc: "The official portal for the NBTI / Nextgen Innovation Challenge and Canada-Africa Innovation Festival. Empowering a legacy of technological sovereignty and global excellence.",
+    heroDesc: "The official portal for the NBTI / Nextgen Innovation Challenge and Canada-Africa Innovation Festival. Empowering a legacy of technological independence and global excellence.",
     btnExplore: "EXPLORE OPPORTUNITIES",
     btnJoin: "JOIN THE NETWORK",
     btnMeet: "MEET PIONEERS",
@@ -28,7 +30,7 @@ export const translations = {
     partnersTitle: "Backed by global leaders.",
     partnersDesc: "The Nextgen Innovation Challenge 2026 is supported by an alliance of world-class institutions committed to advancing Africa's technology and entrepreneurship ecosystem.",
     ecoTitle: "Innovation Ecosystem",
-    ecoDesc: "Explore the various avenues for engagement within the NBTI Innovation Hub.",
+    ecoDesc: "Explore the various avenues for engagement within the NBTI Innovation Partnership Hub.",
     ecoFlagship: "FLAGSHIP INITIATIVE",
     ecoNextgenTitle: "Nextgen Innovation Challenge",
     ecoNextgenDesc: "A high-stakes competition identifying the next generation of African tech giants.",
@@ -42,7 +44,7 @@ export const translations = {
 
     // Strategic Partnerships
     instMission: "Institutional Mission",
-    partnershipHeroTitle: "Catalyzing Sovereign Technological Independence",
+    partnershipHeroTitle: "Catalyzing Technological Independence",
     partnershipHeroDesc: "The National Board for Technology Incubation (NBTI) serves as the primary engine for Nigeria's transition to a knowledge-based economy, orchestrating high-value collaborations between state authority and private innovation.",
     btnExploreFramework: "Explore Framework",
     btnWhitepaper: "Whitepaper",
@@ -50,8 +52,8 @@ export const translations = {
     frameworkDesc: "Designed for international capital, corporate venture offices, and diaspora talent.",
     partnershipsInvestmentTitle: "Strategic Partnerships & Investment Channels",
     partnershipsInvestmentDesc: "Structured vehicles designed to align systemic institutional capital with high-potential regional spin-offs & intellectual properties.",
-    governanceProtocol: "Sovereign Innovation Protocol",
-    governanceTitle: "Governance & Sovereignty",
+    governanceProtocol: "Innovation Protocol",
+    governanceTitle: "Governance & Autonomy",
     governanceDesc: "Upholding high compliance and secure custody structures to align statutory frameworks with global institutional requirements.",
     allianceDesc: "Engage with the official secretariat and regional pioneers.",
     btnDownloadCharter: "Download Alliance Charter",
@@ -62,8 +64,8 @@ export const translations = {
     phase2Desc: "Upgrading technological infrastructure across national tech incubation centers, empowering localized high-growth hubs.",
     phase3: "Phase 3: Global Interoperability",
     phase3Desc: "Connecting regional developers and ventures with the global investment circle and Canada-Africa bilateral corridors.",
-    phase4: "Phase 4: Sovereign Autonomous Tech",
-    phase4Desc: "Transitioning validated prototypes into production-grade sovereign technologies and regional spin-offs.",
+    phase4: "Phase 4: Autonomous Tech",
+    phase4Desc: "Transitioning validated prototypes into production-grade indigenous technologies and regional spin-offs.",
     prominentSeals: "Federal Government of Nigeria Authorized Portal",
 
     // Innovation Leaders
@@ -77,9 +79,9 @@ export const translations = {
     pioneerRoleExecutive: "EXECUTIVE VICE CHAIR",
     pioneerRoleDG: "DIRECTOR GENERAL / CEO",
     pioneerRoleMinister: "HONORABLE MINISTER",
-    pioneerSecCardTitle: "Official Directorate & Secretariat Secretariat",
+    pioneerSecCardTitle: "Official Directorate & Secretariat",
     pioneerSecCardDesc: "Managing state frameworks, international bilateral corridors, and tech commercialization programs.",
-    techSovereigntyIndex: "Tech Sovereignty & Progress Index",
+    techSovereigntyIndex: "Tech Independence & Progress Index",
     sovereigntyMetric: "National Technological Self-Reliance Metric",
     systemStats: "System-wide statutory incubation milestones & performance index metrics tracking current program cycles.",
 
@@ -93,7 +95,7 @@ export const translations = {
     formInstructions: "For regulatory inquiries, accreditation reviews, and high-value investment partnerships.",
     btnSendMessage: "SEND OFFICIAL DISPATCH",
     sending: "TRANSMITTING...",
-    whitepaperTitle: "Strategic Sovereign Framework Whitepaper",
+    whitepaperTitle: "Strategic Framework Whitepaper",
     whitepaperSub: "Official policy outline, statutory structure, and technical roadmap for next-generation economic empowerment.",
     btnRegisterDownload: "REGISTER & INITIATE DOWNLOAD",
 
@@ -113,18 +115,20 @@ export const translations = {
   fr: {
     // Navigation & General
     nbtiNextgen: "NBTI NEXTGEN 2026",
-    navHub: "HUB",
-    navPartnerships: "À PROPOS",
-    navLeaders: "LEADERS",
+    navPartnership: "PARTENARIAT",
+    navMandate: "NOTRE MANDAT",
+    navFootprint: "EMPREINTE GLOBALE",
+    navFramework: "CADRE NATIONAL",
+    navLeaders: "PIONNIERS",
     navContactItem: "CONTACT",
     navContact: "CONTACT",
     langEn: "English",
     langFr: "Français",
 
-    // SovereignHub
+    // Partnership
     heroSubtitle: "LES PROCHAINES FRONTIÈRES DE L'INNOVATION EN AFRIQUE",
     heroTitle: "Accélérer les prochaines frontières de l'innovation en Afrique",
-    heroDesc: "Le portail officiel du Défi d'innovation NBTI / Nextgen et du Festival de l'innovation Canada-Afrique. Autonomiser un héritage de souveraineté technologique et d'excellence mondiale.",
+    heroDesc: "Le portail officiel du Défi d'innovation NBTI / Nextgen et du Festival de l'innovation Canada-Afrique. Autonomiser un héritage d'indépendance technologique et d'excellence mondiale.",
     btnExplore: "EXPLORER LES OPPORTUNITÉS",
     btnJoin: "REJOINDRE LE RÉSEAU",
     btnMeet: "RENCONTRER LES PIONNIERS",
@@ -132,7 +136,7 @@ export const translations = {
     partnersTitle: "Soutenu par des leaders mondiaux.",
     partnersDesc: "Le Défi d'innovation Nextgen 2026 est soutenu par une alliance d'institutions de classe mondiale engagées dans la promotion de l'écosystème technologique et entrepreneurial de l'Afrique.",
     ecoTitle: "Écosystème d'Innovation",
-    ecoDesc: "Explorez les différentes voies d'engagement au sein du carrefour d'innovation de la NBTI.",
+    ecoDesc: "Explorez les différentes voies d'engagement au sein du carrefour de partenariat d'innovation de la NBTI.",
     ecoFlagship: "INITIATIVE PHARE",
     ecoNextgenTitle: "Défi d'Innovation Nextgen",
     ecoNextgenDesc: "Une compétition à enjeux élevés pour identifier la prochaine génération de géants de la technologie africaine.",
@@ -146,7 +150,7 @@ export const translations = {
 
     // Strategic Partnerships
     instMission: "Mission Institutionnelle",
-    partnershipHeroTitle: "Catalyser l'indépendance technologique souveraine",
+    partnershipHeroTitle: "Catalyser l'indépendance technologique nationale",
     partnershipHeroDesc: "Le Conseil National pour l'Incubation Technologique (NBTI) sert de moteur principal pour la transition du Nigeria vers une économie de la connaissance, orchestrant des collaborations de grande valeur entre l'autorité publique et l'innovation privée.",
     btnExploreFramework: "Explorer le Cadre",
     btnWhitepaper: "Livre Blanc",
@@ -154,8 +158,8 @@ export const translations = {
     frameworkDesc: "Conçu pour les capitaux internationaux, les bureaux de capital-risque des entreprises et les talents de la diaspora.",
     partnershipsInvestmentTitle: "Partenariats Stratégiques & Canaux d'Investissement",
     partnershipsInvestmentDesc: "De véritables structures conçues pour aligner les capitaux institutionnels systémiques avec des entreprises régionales à fort potentiel et des propriétés intellectuelles.",
-    governanceProtocol: "Protocole de Souveraineté de l'Innovation",
-    governanceTitle: "Gouvernance & Souveraineté",
+    governanceProtocol: "Protocole de l'Innovation",
+    governanceTitle: "Gouvernance & Autonomie",
     governanceDesc: "Maintenir des normes de conformité élevées et des structures de garde sécurisées pour aligner les cadres réglementaires sur les exigences institutionnelles mondiales.",
     allianceDesc: "Engagez-vous auprès du secrétariat officiel et des pionniers régionaux.",
     btnDownloadCharter: "Télécharger la Charte de l'Alliance",
@@ -166,8 +170,8 @@ export const translations = {
     phase2Desc: "Modernisation des infrastructures technologiques dans les centres nationaux d'incubation, renforçant les pôles de croissance locaux.",
     phase3: "Phase 3 : Interopérabilité Globale",
     phase3Desc: "Connexion des développeurs et entreprises régionaux avec le monde de l'investissement mondial et les corridors bilatéraux Canada-Afrique.",
-    phase4: "Phase 4 : Technologies Souveraines Autonomes",
-    phase4Desc: "Transition des prototypes validés vers des technologies souveraines de niveau industriel et des filiales régionales de premier ordre.",
+    phase4: "Phase 4 : Technologies Autonomes",
+    phase4Desc: "Transition des prototypes validés vers des technologies autonomes de niveau industriel et des filiales régionales de premier ordre.",
     prominentSeals: "Portail Autorisé du Gouvernement Fédéral du Nigeria",
 
     // Innovation Leaders
@@ -179,12 +183,12 @@ export const translations = {
     pioneerRoleFounder: "FONDATEUR & DIRECTEUR GÉNÉRAL",
     pioneerRoleSpecialEnvoy: "ENVOYÉ SPÉCIAL & PIO",
     pioneerRoleExecutive: "VICE-PRÉSIDENT EXÉCUTIF",
-    pioneerRoleDG: "DIRECTEUR GÉNÉRAL / CEO",
+    pioneerRoleDG: "DIRECTOR GENERAL / CEO",
     pioneerRoleMinister: "HONORABLE MINISTRE",
     pioneerSecCardTitle: "Direction Officielle & Secrétariat Administratif",
     pioneerSecCardDesc: "Gestion des cadres étatiques, des corridors bilatéraux internationaux et des programmes de commercialisation des technologies.",
-    techSovereigntyIndex: "Indice de Souveraineté Technologique & de Progrès",
-    sovereigntyMetric: "Mesure d'Auto-Sufisante Technologique Nationale",
+    techSovereigntyIndex: "Indice de Technologie Indépendante & de Progrès",
+    sovereigntyMetric: "Mesure d'Auto-Suffisance Technologique Nationale",
     systemStats: "Jalons d'incubation réglementaire à l'échelle du système et indicateurs de performance pour les cycles de programme actuels.",
 
     // Modals
@@ -197,7 +201,7 @@ export const translations = {
     formInstructions: "Pour les demandes de réglementation, les examens d'accréditation et les partenariats d'investissement stratégiques.",
     btnSendMessage: "ENVOYER LA DÉPÊCHE OFFICIELLE",
     sending: "TRANSMISSION...",
-    whitepaperTitle: "Livre Blanc du Cadre Stratégique Souverain",
+    whitepaperTitle: "Livre Blanc du Cadre Stratégique",
     whitepaperSub: "Aperçu de la politique officielle, de la structure réglementaire et de la feuille de route technique pour l'autonomisation économique future.",
     btnRegisterDownload: "S'ENREGISTRER & LANCER LE TÉLÉCHARGEMENT",
 

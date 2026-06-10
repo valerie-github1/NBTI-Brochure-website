@@ -29,9 +29,10 @@ export default function Navigation({
   const t = translations[lang];
 
   const navItems = [
-    { id: "hub" as TabId, label: t.navHub },
-    { id: "partnerships" as TabId, label: t.navPartnerships },
-    { id: "leaders" as TabId, label: t.navLeaders },
+    { id: "mandate" as TabId, label: t.navMandate },
+    { id: "footprint" as TabId, label: t.navFootprint },
+    { id: "framework" as TabId, label: t.navFramework },
+    { id: "leadership" as TabId, label: t.navLeaders },
   ];
 
   const handleTabChange = (tabId: TabId) => {
@@ -44,7 +45,7 @@ export default function Navigation({
       <div className="max-w-[1440px] mx-auto px-6 md:px-16 py-4 flex justify-between items-center bg-[#0c0c0c]">
         {/* Left: Logo and Title */}
         <div
-          onClick={() => handleTabChange("hub")}
+          onClick={() => handleTabChange("mandate")}
           className="flex items-center gap-4 shrink-0 cursor-pointer group"
         >
           <div className="w-11 h-11 rounded-full bg-white border border-neutral-800 flex items-center justify-center p-1.5 shadow-md overflow-hidden shrink-0 group-hover:scale-105 transition-transform duration-300">

@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 import { Language, translations } from "../translations";
+import { PARTNERS_DATA } from "../data";
 
 interface StrategicPartnershipsProps {
   onOpenWhitepaper: () => void;
@@ -205,6 +206,45 @@ export default function StrategicPartnerships({
               />
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Ecosystem Member Logo Carousel (Smooth auto-playing with hover-to-pause) */}
+      <section className="py-12 bg-[#0c0c0c] border-y border-outline-variant/10 relative overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-16 mb-6">
+          <p className="font-sans text-[10px] text-secondary tracking-widest uppercase font-bold text-center">
+            {lang === "fr" ? "ALLIANCE STRATÉGIQUE DES MEMBRES DE L'ÉCOSYSTÈME" : "ECOSYSTEM PARTNERS & SPONSORS"}
+          </p>
+        </div>
+        <div className="marquee-container select-none pointer-events-auto">
+          <div className="marquee-content flex items-center">
+            {/* Render twice for continuous infinite loop */}
+            {[...PARTNERS_DATA, ...PARTNERS_DATA].map((partner, index) => {
+              if (partner.image === "handshake") return null;
+              return (
+                <div
+                  key={`${partner.id}-${index}`}
+                  className="flex items-center gap-3 shrink-0 opacity-50 hover:opacity-100 transition-opacity duration-300 px-6 group cursor-pointer"
+                  title={`${partner.name} - ${partner.role}`}
+                >
+                  <img
+                    alt={partner.name}
+                    className="h-8 w-auto object-contain max-w-[120px] filter brightness-95"
+                    src={partner.image}
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="flex flex-col text-left">
+                    <span className="font-sans text-[10px] font-bold text-white tracking-wide uppercase">
+                      {partner.name}
+                    </span>
+                    <span className="font-sans text-[8px] text-[#bdae93] tracking-wider uppercase">
+                      {partner.role}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 

@@ -19,14 +19,14 @@ export default function PageLoader({ onComplete, lang }: PageLoaderProps) {
   const statuses = lang === 'fr' 
     ? [
         'Établissement d\'une liaison de données sécurisée...',
-        'Chargement du pôle de souveraineté...',
+        'Chargement du pôle de partenariat...',
         'Alignement des alliances stratégiques (NBTI & UKALD)...',
         'Synchronisation du pupitre de leadership...',
         'Finalisation du protocole de sécurité...'
       ]
     : [
         'Establishing secure data link...',
-        'Loading Sovereign Hub...',
+        'Loading Partnership Portal...',
         'Aligning Strategic Alliances (NBTI & UKALD)...',
         'Synchronizing Leadership Desk...',
         'Finalizing secure protocol...'
@@ -104,7 +104,7 @@ export default function PageLoader({ onComplete, lang }: PageLoaderProps) {
               NBTI NEXTGEN 2026
             </h2>
             <p className="font-sans text-[10px] tracking-[0.25em] text-[#bdae93] font-medium uppercase">
-              {lang === 'fr' ? 'Cadre National Pur Souverain' : 'Sovereign National Framework'}
+              {lang === 'fr' ? 'Cadre National d\'Innovation' : 'National Innovation Framework'}
             </p>
           </div>
         </motion.div>
